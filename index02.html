@@ -1,0 +1,72 @@
+<HTML>
+	
+	<TITLE>Проба табличной разметки</TITLE>
+	
+	<BODY>
+		<SCRIPT src="vue.js"></SCRIPT>
+		
+		<DIV id="myApp">
+			<TABLE border="1" width="100%" height="100%">
+				<TR align="center">
+					<TD valign="middle">
+						
+						<TABLE style="border-collapse: collapse">
+							<TR v-for="rows in im_rnd">
+								<TD v-for="elem in rows"><IMG :src="elem"></TD>
+							</TR>					
+						</TABLE>
+						
+					</TD>
+				</TR>
+			<TABLE>
+		</DIV>
+		
+		<SCRIPT>
+			var myVue = new Vue({
+								el: "#myApp",
+						
+								data:
+								{
+									images: [
+												["design0001.jpg", "design0002.jpg", "design0003.jpg", "design0004.jpg"],
+												["design0005.jpg", "design0006.jpg", "design0007.jpg", "design0008.jpg"]
+											],
+								},
+								
+								computed:
+								{
+									im_rnd: function()
+									{
+										var arr;
+										var row;
+										var currRow;
+										var a;
+										var b;
+										
+										arr = [];
+										for (var i = 0; i < this.images.length; i++)
+										{
+											currRow = this.images[i];
+											row = [];
+											console.log(currRow.length);
+											for (var j = 0; j < currRow.length; j++)
+											{
+												a = Math.round(Math.random() * (this.images.length - 1));
+												b = Math.round(Math.random() * (currRow.length - 1));
+												
+												row.push(this.images[a][b]);
+											}
+											
+											arr.push(row);
+										}
+										
+										return arr;
+									}
+								}
+			});
+		</SCRIPT>
+		
+		
+	</BODY>
+	
+</HTML>

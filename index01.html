@@ -1,0 +1,46 @@
+<HTML>
+	
+	<TITLE>Проба табличной разметки</TITLE>
+	
+	<BODY>
+		<SCRIPT src="vue.js"></SCRIPT>
+		
+		<DIV id="myApp">
+			<TABLE border="1" width="100%" height="100%">
+				<TR align="center">
+					<TD valign="middle">
+						
+						<TABLE style="border-collapse: collapse">
+							<TR v-for="rows in images">
+								<TD v-for="elem in rows"><IMG :src="elem"></TD>
+							</TR>					
+						</TABLE>
+						
+					</TD>
+				</TR>
+			<TABLE>
+		</DIV>
+		
+		<SCRIPT>
+			var myVue = new Vue({
+								el: "#myApp",
+						
+								data:
+								{
+									images: [
+												["design0001.jpg", "design0002.jpg", "design0003.jpg", "design0004.jpg"],
+												["design0005.jpg", "design0006.jpg", "design0007.jpg", "design0008.jpg"]
+											],
+								},
+								
+								computed:
+								{
+									
+								}
+			});
+		</SCRIPT>
+		
+		
+	</BODY>
+	
+</HTML>
